@@ -1,8 +1,9 @@
-<?php
+<?php 
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-echo 'Bug fix  2';
+use framework\base\Application; 
+
+require_once(__DIR__."/include/autoload.php");
+$application = new Application(); 
+$application->run();
+
+?>
