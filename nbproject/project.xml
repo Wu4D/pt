@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.php.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
+<<<<<<< HEAD
             <name>Ptframework</name>
+=======
+            <name>PTFramework</name>
+>>>>>>> f5446bba3d73cca4edcee9cf4897bbcbd096c706
         </data>
     </configuration>
 </project>
