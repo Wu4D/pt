@@ -1,6 +1,10 @@
 <?php
 
 function autoload($class){
+   if(preg_match("/Exception$/", $class)){
+       return;
+    }
+    
    $namespace_to_path = str_replace("\\","/",$class); 
    
    if($namespace_to_path == $class){
