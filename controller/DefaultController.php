@@ -9,7 +9,9 @@ class DefaultController extends Controller
     public function actionIndex(){
         $fructe = ['portocala','banana','lamaie'];
         $ar = new ActiveRecord();
-        $ar->user->some_method();
+        $ar->user->one()->where()->join();
+   
+
         $this->render("index", compact('fructe'));
     }
     

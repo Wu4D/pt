@@ -3,16 +3,8 @@ namespace framework\base;
 use controller\DefaultController;
 
 
-class Application {
-    
-    private static $config;
-    
-    
-    
-    public function __construct() {
-        require_once 'config.php';
-        self::$config = $config;
-    }
+class Application extends Base {
+
     
     public function run(){
         //R is the get parrameter
@@ -24,7 +16,8 @@ class Application {
     public function route($_get_param){
         
         $route = (isset($_GET[$_get_param]) ? $_GET[$_get_param]: "");
-        $method_hook = self::$config['app']['controller']['method_hook'];
+       
+        $method_hook = Base::$config['app']['controller']['method_hook'];
         
         //If route is empty route to default controler 
         if(empty($route)){
@@ -43,7 +36,7 @@ class Application {
                 
                 //Set method name  
                 $method_name = (!empty($parse_folders[$parse_folders_count-1]) && $parse_folders_count > 1 ? $parse_folders[$parse_folders_count-1] : "Index");
-                $method_name = self::$config['app']['controller']['method_hook'].$method_name; 
+                $method_name = parent::$config['app']['controller']['method_hook'].$method_name; 
                 
                 unset($parse_folders[$parse_folders_count-1]); 
                 $parse_folders = array_map('ucfirst',$parse_folders);
@@ -52,11 +45,11 @@ class Application {
                 $controler_name = ($parse_folders_count > 1 ? implode("", $parse_folders) : ucfirst($route))."Controller"; //Determine if it should call method or controler->methodIndex
                 
                
-                $controler_file = getcwd()."/".self::$config['app']['controller']['path'].$controler_name.".php";
+                $controler_file = getcwd()."/".parent::$config['app']['controller']['path'].$controler_name.".php";
                 
                 if(file_exists($controler_file)){
                      
-                $controller_namespace = str_replace("/","\\",self::$config['app']['controller']['path']);
+                $controller_namespace = str_replace("/","\\",parent::$config['app']['controller']['path']);
                 $controller_class = $controller_namespace.$controler_name;
                 $controller = new $controller_class(); 
                
@@ -95,7 +88,7 @@ class Application {
     }
     
     public static function app(){
-        return self::$config;
+        return parent::$config;
     }
     
    

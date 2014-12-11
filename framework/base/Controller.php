@@ -7,6 +7,7 @@ namespace framework\base;
  */
 
 use framework\helpers\php\String;
+
 class Controller {
     
     public function render($file,$pass_array = array()){

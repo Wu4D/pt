@@ -10,20 +10,20 @@ $config = ['app'=>
                             
                         'method_hook' => 'action',
                         ],
-                   ],
                    
                    
-                   ['db'=>
+                   
+                   'db'=>
                        ['type'=>'mysql',
                        'host'=>'localhost', 
                        'user'=>'root', 
-                       'pass'=>'pass', 
+                       'pass'=>'', 
                        'name'=>'ptframework'],
-                   ],
+                   
     
     
     
-                  ['cache'=>0], //Enable disable chaching - 0 Disabled, 1 Enabled
+                  'cache'=>0], //Enable disable chaching - 0 Disabled, 1 Enabled
           ];
          
 ?>
