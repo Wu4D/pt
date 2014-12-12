@@ -7,11 +7,17 @@ class DefaultController extends Controller
 { 
     
     public function actionIndex(){
-        $fructe = ['portocala','banana','lamaie'];
-        $ar = new ActiveRecord();
-        $ar->user->one()->where()->join();
    
-
+        
+        $ar = new ActiveRecord();
+  
+        $ar->users->get()->where(['id'=>'id'])->all();
+        
+  
+               
+         
+    
+         
         $this->render("index", compact('fructe'));
     }
     
@@ -20,7 +26,7 @@ class DefaultController extends Controller
     }
     
     public function actionTest(){
-        echo "TEST FILE";
+       
     }
     
 }

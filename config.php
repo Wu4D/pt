@@ -15,7 +15,7 @@ $config = ['app'=>
                    
                    'db'=>
                        ['type'=>'mysql',
-                       'host'=>'localhost', 
+                       'host'=>'127.0.0.1', 
                        'user'=>'root', 
                        'pass'=>'', 
                        'name'=>'ptframework'],
