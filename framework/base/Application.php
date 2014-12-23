@@ -5,10 +5,12 @@ use controller\DefaultController;
 
 class Application extends Base {
 
+  
     
     public function run(){
         //R is the get parrameter
         $this->route("r"); //Route the request to the proper controler 
+      
         
            
     }

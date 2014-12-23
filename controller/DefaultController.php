@@ -2,23 +2,21 @@
 namespace controller; 
 use framework\base\Controller;
 use framework\db\ActiveRecord;
-
+ini_set("max_execution_time", 0);
 class DefaultController extends Controller
 { 
     
     public function actionIndex(){
-   
+        
         
         $ar = new ActiveRecord();
-  
-        $ar->users->get()->where(['id'=>'id'])->all();
+//        $user = $ar->users->join->with(["post","modified"])->on(); 
         
-  
-               
-         
-    
-         
-        $this->render("index", compact('fructe'));
+//        $this->restrict([$_SESSION['id'],$ar->post->findOne($user->id), $ar->post->titlu => "Ceva"]);
+        
+        $aici = "CEVA TEXT DYNAMIC";
+        $this->render("index",  compact("aici"));
+        
     }
     
     public function actionVeziProduse(){
@@ -27,6 +25,10 @@ class DefaultController extends Controller
     
     public function actionTest(){
        
+    }
+    
+    public function actionPagina(){
+        
     }
     
 }
