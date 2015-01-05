@@ -10,7 +10,7 @@ class Base {
        public function __construct() {
             require_once 'config.php';
             self::$config = $config;
-              if (class_exists("Memcache") && self::$config['app']['cache']['memcache']['status']) {
+              if (class_exists("Memcache",false) && self::$config['app']['cache']['memcache']['status']) {
 
                     if (self::$memcache == null) {
                          self::$memcache = new \Memcache();

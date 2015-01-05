@@ -54,8 +54,7 @@ class ActiveQuery   {
     public function all(){
          $this->method_end[__METHOD__] = __METHOD__;
          
-         $this->query = "{$this->type} ".$this->getSelectFields()." from ".self::$table." {$this->where} {$this->limit} {$this->order} ";
-         
+         $this->query = "{$this->type} ".$this->getSelectFields()." from ".self::$table." {$this->where} {$this->order} {$this->limit}";
          
          $this->ready = true;
 
@@ -91,6 +90,12 @@ class ActiveQuery   {
         return $this; //Return current object for chaning methods 
     }
     
+    public function sql($input){
+        
+        $this->query = $input[0];
+        $this->ready = true;
+    }
+    
     public function join(){
       $this->method_in_between[__METHOD__] = __METHOD__;
       
@@ -99,15 +104,21 @@ class ActiveQuery   {
 
     }
     
-    public function limit(){
+    public function limit($input){
        $this->method_in_between[__METHOD__] = __METHOD__;
+    $this->limit = "LIMIT ".$input[0];
        
        return $this; //Return current object for chaning methods 
 
     }
     
-    public function order(){
+    public function orderBy($input){
        $this->method_in_between[__METHOD__] = __METHOD__;
+       $this->order = "order by ";
+       foreach($input[0] as $key => $value){
+           $this->order .= $key . " $value ";
+       }
+       
        
        return $this; //Return current object for chaning methods 
 

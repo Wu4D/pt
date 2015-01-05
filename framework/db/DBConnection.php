@@ -85,6 +85,7 @@ class DBConnection {
         try {
             if(!empty($input['query'])){ 
                 
+                if(!empty($input['binding'])){
                 $command = $this->PDO->prepare($input['query']); 
              
                 //Bind paramas
@@ -98,10 +99,12 @@ class DBConnection {
                     }
                  }
                  
-
+                }else{
+                    //If query is passed without binding 
+                   $command = $this->PDO->query($input['query']);
+                }
                 
                 $command->execute(); 
-                  var_dump($this->PDO->errorInfo());
                 $result = $command->fetchAll(\PDO::FETCH_ASSOC);
               
                 return $result;

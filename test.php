@@ -1,6 +1,7 @@
 <?php 
 define('LOOP',1000000);
- 
+ ini_set("max_execution_time", 0);
+ini_set('memory_limit', '-1');
 class ClassA {
   public function normal() {
   }
@@ -91,16 +92,36 @@ function predict($array_predict){
 
 
 
-  $file = file_get_contents("http://loto.ro/php/arh_649.php?an=2014&luna=12&joaca=1");
+  $file = file_get_contents("http://loto.ro/php/arh_649.php?an=2014&luna=12&joaca=4");
   echo $file;
   $matches = array();
   $number_len = 6;
   preg_match_all("/id=\"numbers-castig\">[0-9]{1,2}/", $file,$matches);
   
-  $winning_numbers = array();
   $rest = 0;
   $numbers = "";
+  
+  $reset = 0;
+  $tickes = 1;
+  $winning_tickets = array();
+  $mathces = 
+  print_r($matches);
+  for($i = 0;$i < count($matches[0]);$i++){
+      if($reset < 6){
+          
+          $winning_tickets[$tickes][] = str_replace('id="numbers-castig">','', $matches[0][$i]);
+      }else{
+          $tickes++;
+          $reset = 0;
+      }
+  }
+  
+  
+  require_once 'Combinatorics.php';
+ 
 
+$combinatorics = new Math_Combinatorics;
+$combinatorics->combinations(range(1,49), 6);
 
 
  
